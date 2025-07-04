@@ -1,0 +1,15 @@
+# 连接到 GitHub allex 仓库的命令
+# 请在命令行中逐行执行以下命令：
+
+git init
+git config user.name "logdns"
+git config user.email "logdns@users.noreply.github.com"
+git remote add origin https://github.com/logdns/allex.git
+git add .
+git commit -m "feat: initial commit - forex notifier service v1.0.0"
+git branch -M main
+git push -u origin main
+git tag -a v1.0.0 -m "Release version 1.0.0"
+git push origin v1.0.0
+
+# 完成后访问 https://github.com/logdns/allex 查看项目

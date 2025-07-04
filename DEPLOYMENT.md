@@ -11,44 +11,7 @@
 
 ## 宝塔面板部署
 
-### 前置要求
-- 已安装宝塔面板
-- 已安装Node.js管理器
-- 服务器可访问外网
-
-### 部署步骤
-
-1. **创建项目目录**
-   ```bash
-   mkdir /www/wwwroot/forex-notifier
-   cd /www/wwwroot/forex-notifier
-   ```
-
-2. **上传项目文件**
-   - 通过宝塔文件管理器上传所有项目文件
-   - 或使用Git克隆项目
-
-3. **安装依赖**
-   ```bash
-   npm install
-   ```
-
-4. **配置环境变量**
-   - 在宝塔面板中设置环境变量
-   - 或创建 `.env` 文件
-
-5. **配置定时任务**
-   - 进入宝塔面板 -> 计划任务
-   - 添加Shell脚本任务
-   - 执行周期：每5小时
-   - 脚本内容：
-   ```bash
-   cd /www/wwwroot/forex-notifier && node server.js
-   ```
-
-6. **启动服务**
-   - 使用宝塔Node.js管理器启动项目
-   - 或使用PM2管理进程
+详细的宝塔面板部署指南请查看：[BAOTA_DEPLOYMENT.md](./BAOTA_DEPLOYMENT.md)
 
 ## Docker部署
 

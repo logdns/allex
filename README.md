@@ -49,13 +49,12 @@ npm run test
 
 ## 部署方式
 
-本项目支持多种部署方式，请根据您的环境选择：
+本项目支持多种部署方式：
 
-- 📋 [宝塔面板部署](./BAOTA_DEPLOYMENT.md) - 详细的宝塔面板部署指南
-- 🐳 [Docker部署](./DEPLOYMENT.md#docker部署) - 容器化部署方案
+- 📋 [宝塔面板部署](./BAOTA_DEPLOYMENT.md) - 宝塔面板用户推荐
+- 🐳 [Docker部署](./DEPLOYMENT.md#docker部署) - 容器化部署
 - 🚀 [PM2部署](./DEPLOYMENT.md#pm2部署) - 生产环境推荐
-- ☁️ [Cloudflare Workers](./DEPLOYMENT.md#cloudflare-workers部署) - 无服务器部署
-- 📦 [Node.js直接部署](./DEPLOYMENT.md#nodejs直接部署) - 传统部署方式
+- 📦 [完整部署指南](./DEPLOYMENT.md) - 查看所有部署方式
 
 ## 配置说明
 
@@ -114,22 +113,12 @@ npm run docker:run   # 运行Docker容器
 
 ## 定时任务配置
 
-### 使用crontab（Linux/macOS）
-```bash
-# 编辑crontab
-crontab -e
+项目支持多种定时任务配置方式，详细说明请查看 [部署指南](./DEPLOYMENT.md)。
 
-# 添加定时任务（每5小时执行一次）
-0 */5 * * * cd /path/to/forex-notifier && node cron.js
-```
-
-### 使用PM2
-```bash
-pm2 start ecosystem.config.js --env production
-```
-
-### 使用宝塔面板
-在宝塔面板的计划任务中添加Shell脚本任务，执行周期设为5小时。
+**快速配置：**
+- **crontab**: `0 */5 * * * cd /path/to/project && node cron.js`
+- **PM2**: `pm2 start ecosystem.config.js --env production`
+- **宝塔面板**: 在计划任务中添加Shell脚本，每5小时执行
 
 ## 推送消息格式
 
