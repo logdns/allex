@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  forex-notifier:
+    build: .
+    container_name: forex-notifier
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - WECHAT_WEBHOOK_URL=${WECHAT_WEBHOOK_URL}
+      - DINGTALK_WEBHOOK_URL=${DINGTALK_WEBHOOK_URL}
+      - FEISHU_WEBHOOK_URL=${FEISHU_WEBHOOK_URL}
+    volumes:
+      - ./logs:/app/logs
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/status', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - forex-network
+
+  # 定时任务容器（可选）
+  forex-cron:
+    build: .
+    container_name: forex-cron
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - WECHAT_WEBHOOK_URL=${WECHAT_WEBHOOK_URL}
+      - DINGTALK_WEBHOOK_URL=${DINGTALK_WEBHOOK_URL}
+      - FEISHU_WEBHOOK_URL=${FEISHU_WEBHOOK_URL}
+    volumes:
+      - ./logs:/app/logs
+      - /etc/localtime:/etc/localtime:ro
+    command: >
+      sh -c "
+        echo '0 */5 * * * cd /app && node cron.js >> /app/logs/cron.log 2>&1' > /tmp/crontab &&
+        crontab /tmp/crontab &&
+        crond -f
+      "
+    depends_on:
+      - forex-notifier
+    networks:
+      - forex-network
+
+networks:
+  forex-network:
+    driver: bridge

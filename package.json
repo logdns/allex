@@ -1,0 +1,47 @@
+{
+  "name": "forex-notifier",
+  "version": "1.0.0",
+  "description": "外汇汇率推送服务 - 支持企业微信、钉钉、飞书",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "cron": "node cron.js",
+    "test": "node test.js",
+    "pm2:start": "pm2 start ecosystem.config.js --env production",
+    "pm2:stop": "pm2 stop forex-notifier",
+    "pm2:restart": "pm2 restart forex-notifier",
+    "pm2:logs": "pm2 logs forex-notifier",
+    "docker:build": "docker build -t forex-notifier .",
+    "docker:run": "docker run -d --name forex-notifier -p 3000:3000 forex-notifier",
+    "docker:stop": "docker stop forex-notifier && docker rm forex-notifier"
+  },
+  "keywords": [
+    "forex",
+    "exchange-rate",
+    "notification",
+    "wechat",
+    "dingtalk",
+    "feishu",
+    "cron"
+  ],
+  "author": "logdns",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/logdns/allex.git"
+  },
+  "bugs": {
+    "url": "https://github.com/logdns/allex/issues"
+  },
+  "homepage": "https://github.com/logdns/allex#readme"
+}
