@@ -1,6 +1,3 @@
-// 使用可选链操作符来安全地访问 SUBSCRIBERS_KV
-const SUBSCRIBERS = globalThis.SUBSCRIBERS_KV;
-
 // 企业微信机器人 Webhook URL
 const WECHAT_WEBHOOK_URL = 'YOUR_WECHAT_WEBHOOK_URL';
 
@@ -9,9 +6,6 @@ const DINGTALK_WEBHOOK_URL = 'YOUR_DINGTALK_WEBHOOK_URL';
 
 // 飞书机器人 Webhook URL
 const FEISHU_WEBHOOK_URL = 'YOUR_FEISHU_WEBHOOK_URL';
-
-// 用于在没有 KV 存储时在内存中临时存储订阅者
-let inMemorySubscribers = [];
 
 async function handleRequest(request) {
   const url = new URL(request.url);
@@ -24,7 +18,7 @@ async function handleRequest(request) {
   }
 }
 
-// 移除 Telegram webhook 处理函数，改为专注于定时推送
+// 专注于定时推送到企业微信、钉钉、飞书
 
 async function handleCron() {
   try {
@@ -224,11 +218,7 @@ async function sendToFeishu(message) {
   }
 }
 
-// 移除了 Telegram 相关的订阅管理函数，现在直接推送到所有平台
-
-// 移除了不再需要的 Telegram 相关函数
-
-// 移除了帮助信息函数，现在是自动推送服务
+// 自动推送服务，无需订阅管理
 
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request));
