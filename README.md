@@ -155,39 +155,7 @@ npm run docker:run   # 运行Docker容器
 5. 检查防火墙设置
 6. 确认定时任务配置
 
-## 版本发布
 
-### 自动发布
-
-使用提供的发布脚本：
-
-```bash
-# Linux/macOS
-./release.sh patch   # 补丁版本 (1.0.0 -> 1.0.1)
-./release.sh minor   # 次版本 (1.0.0 -> 1.1.0)
-./release.sh major   # 主版本 (1.0.0 -> 2.0.0)
-
-# Windows
-release.bat patch
-release.bat minor
-release.bat major
-```
-
-### 手动发布
-
-```bash
-# 更新版本号
-npm version patch
-
-# 提交更改
-git add .
-git commit -m "chore: release version x.x.x"
-git tag -a vx.x.x -m "Release version x.x.x"
-
-# 推送到GitHub
-git push origin main
-git push origin vx.x.x
-```
 
 ## 贡献指南
 
