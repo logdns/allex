@@ -41,10 +41,7 @@ npm start
 ```
 
 ### 5. 测试推送
-访问 `http://localhost:3000/cron` 或运行：
-```bash
-npm run test
-```
+访问 `http://localhost:3000/cron` 手动触发推送测试
 
 ## 部署方式
 
@@ -95,11 +92,9 @@ FEISHU_WEBHOOK_URL=https://open.feishu.cn/open-apis/bot/v2/hook/YOUR_TOKEN
 ## 可用脚本
 
 ```bash
-npm start          # 启动服务
-npm run dev        # 开发模式启动（使用nodemon）
-npm run cron       # 手动执行一次推送
-npm test           # 运行测试
-npm run pm2:start  # 使用PM2启动
+npm start            # 启动服务
+npm run cron         # 手动执行一次推送
+npm run pm2:start    # 使用PM2启动
 npm run docker:build # 构建Docker镜像
 npm run docker:run   # 运行Docker容器
 ```
@@ -143,7 +138,7 @@ npm run docker:run   # 运行Docker容器
 
 ## 测试
 
-可以通过访问 `https://your-worker-domain.workers.dev/cron` 来手动触发一次推送测试。
+启动服务后，访问 `http://localhost:3000/cron` 来手动触发一次推送测试。
 
 ## 故障排除
 
@@ -153,8 +148,6 @@ npm run docker:run   # 运行Docker容器
 4. 验证网络连接是否正常
 5. 检查防火墙设置
 6. 确认定时任务配置
-
-
 
 ## 贡献指南
 

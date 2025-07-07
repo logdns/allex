@@ -5,16 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
     "cron": "node cron.js",
-    "test": "node test.js",
     "pm2:start": "pm2 start ecosystem.config.js --env production",
-    "pm2:stop": "pm2 stop forex-notifier",
-    "pm2:restart": "pm2 restart forex-notifier",
-    "pm2:logs": "pm2 logs forex-notifier",
     "docker:build": "docker build -t forex-notifier .",
-    "docker:run": "docker run -d --name forex-notifier -p 3000:3000 forex-notifier",
-    "docker:stop": "docker stop forex-notifier && docker rm forex-notifier"
+    "docker:run": "docker run -d --name forex-notifier -p 3000:3000 forex-notifier"
   },
   "keywords": [
     "forex",
@@ -29,9 +23,6 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.3.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.2"
   },
   "engines": {
     "node": ">=16.0.0"
